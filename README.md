@@ -1,6 +1,6 @@
 # 5Star Flex/Support Auto-Register
 
-A Chrome extension that automatically signs you up for flex sessions on 5starstudents.com — no API, no scripts to run, just click and go.
+A Chrome extension that automatically signs you up for flex sessions on 5starstudents.com fully spagetticoded :3
 
 ---
 
