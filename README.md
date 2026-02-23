@@ -4,7 +4,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 
 ---
 
-## What It Does
+## What it Does
 
 - Scans upcoming sections
 - Finds selected teacher
@@ -29,7 +29,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 
 ---
 
-## Usage
+### How to use
 
 1. Click Extention -> Open 5starstudents
 2. Sign in with your Google account
