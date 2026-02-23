@@ -15,7 +15,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 
 ---
 
-### How to download
+## How to download
 
 1. Click the green **`<> Code`** button at the top of this GitHub page
 2. Select **Download ZIP**
@@ -29,7 +29,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 
 ---
 
-### How to use
+## How to use
 
 1. Click Extention -> Open 5starstudents
 2. Sign in with your Google account
