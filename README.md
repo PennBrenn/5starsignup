@@ -23,7 +23,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
    - **Windows🤢:** Right-click the ZIP -> Extract All
    - **Mac🤢:** Double-click the ZIP file
    - **Linux🥹:** Right-click the ZIP -> Extract All
-   - **Chromeos🤮:** Hold alt or ○ button and click -> Extract All\
+   - **Chromeos🤮:** Hold alt or ○ button and click -> Extract All
 4. Open up chrome -> chrome://extensions/ -> Developer Mode -> Load Unpacked
 5. Open the extracted folder and find the **`extension`** subfolder inside
 
