@@ -13,8 +13,6 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 - Logs every action in real time
 - Skips and dosent overwirte past sign ups
 
----
-
 ## How to download
 
 1. Click the green **`<> Code`** button at the top of this GitHub page
@@ -22,8 +20,6 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 3. Once downloaded, unzip the file
 4. Open up chrome -> chrome://extensions/ -> Developer Mode -> Load Unpacked
 5. Open the extracted folder and find the **`extension`** subfolder inside
-
----
 
 ## How to use
 
