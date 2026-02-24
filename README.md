@@ -19,11 +19,7 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 
 1. Click the green **`<> Code`** button at the top of this GitHub page
 2. Select **Download ZIP**
-3. Once downloaded, unzip the file:
-   - **Windows🤢:** Right-click the ZIP -> Extract All
-   - **Mac🤢:** Double-click the ZIP file
-   - **Linux🥹:** Right-click the ZIP -> Extract All
-   - **Chromeos🤮:** Hold alt or ○ button and click -> Extract All
+3. Once downloaded, unzip the file
 4. Open up chrome -> chrome://extensions/ -> Developer Mode -> Load Unpacked
 5. Open the extracted folder and find the **`extension`** subfolder inside
 
