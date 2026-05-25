@@ -5,32 +5,47 @@ const logBox = document.getElementById('logBox');
 const statusDot = document.getElementById('statusDot');
 const statusText = document.getElementById('statusText');
 const teacherInput = document.getElementById('teacherName');
+const toggleMon = document.getElementById('toggleMon');
 const toggleTue = document.getElementById('toggleTue');
 const toggleWed = document.getElementById('toggleWed');
+const toggleThu = document.getElementById('toggleThu');
+const toggleFri = document.getElementById('toggleFri');
+const toggleSat = document.getElementById('toggleSat');
+const toggleSun = document.getElementById('toggleSun');
 const mainUI = document.getElementById('mainUI');
 const pageGuard = document.getElementById('pageGuard');
 
 let isRunning = false;
 
 // ── Persist settings ──────────────────────────────────────────────────────────
-chrome.storage.sync.get(['teacherName', 'tuesday', 'wednesday'], (data) => {
+chrome.storage.sync.get(['teacherName', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'], (data) => {
   if (data.teacherName) teacherInput.value = data.teacherName;
+  if (data.monday === false) toggleMon.classList.remove('active');
   if (data.tuesday === false) toggleTue.classList.remove('active');
   if (data.wednesday === false) toggleWed.classList.remove('active');
+  if (data.thursday === false) toggleThu.classList.remove('active');
+  if (data.friday === false) toggleFri.classList.remove('active');
+  if (data.saturday === false) toggleSat.classList.remove('active');
+  if (data.sunday === false) toggleSun.classList.remove('active');
 });
 
 function saveSettings() {
   chrome.storage.sync.set({
     teacherName: teacherInput.value,
+    monday: toggleMon.classList.contains('active'),
     tuesday: toggleTue.classList.contains('active'),
     wednesday: toggleWed.classList.contains('active'),
+    thursday: toggleThu.classList.contains('active'),
+    friday: toggleFri.classList.contains('active'),
+    saturday: toggleSat.classList.contains('active'),
+    sunday: toggleSun.classList.contains('active'),
   });
 }
 
 teacherInput.addEventListener('input', saveSettings);
 
 // ── Day toggles ───────────────────────────────────────────────────────────────
-[toggleTue, toggleWed].forEach(el => {
+[toggleMon, toggleTue, toggleWed, toggleThu, toggleFri, toggleSat, toggleSun].forEach(el => {
   el.addEventListener('click', () => {
     el.classList.toggle('active');
     saveSettings();
@@ -81,11 +96,16 @@ runBtn.addEventListener('click', async () => {
     return;
   }
 
+  const doMonday = toggleMon.classList.contains('active');
   const doTuesday = toggleTue.classList.contains('active');
   const doWednesday = toggleWed.classList.contains('active');
+  const doThursday = toggleThu.classList.contains('active');
+  const doFriday = toggleFri.classList.contains('active');
+  const doSaturday = toggleSat.classList.contains('active');
+  const doSunday = toggleSun.classList.contains('active');
 
-  if (!doTuesday && !doWednesday) {
-    log('Select at least one day (Tuesday or Wednesday).', 'error');
+  if (!doMonday && !doTuesday && !doWednesday && !doThursday && !doFriday && !doSaturday && !doSunday) {
+    log('Select at least one day.', 'error');
     return;
   }
 
@@ -99,7 +119,7 @@ runBtn.addEventListener('click', async () => {
   setStatus('running', 'Running...');
 
   log(`Target teacher: "${teacher}"`);
-  log(`Days: ${[doTuesday && 'Tuesday', doWednesday && 'Wednesday'].filter(Boolean).join(', ')}`);
+  log(`Days: ${[doMonday && 'Mon', doTuesday && 'Tue', doWednesday && 'Wed', doThursday && 'Thu', doFriday && 'Fri', doSaturday && 'Sat', doSunday && 'Sun'].filter(Boolean).join(', ')}`);
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
@@ -107,7 +127,7 @@ runBtn.addEventListener('click', async () => {
   chrome.tabs.sendMessage(tab.id, {
     action: 'autoRegister',
     teacher,
-    days: { tuesday: doTuesday, wednesday: doWednesday }
+    days: { monday: doMonday, tuesday: doTuesday, wednesday: doWednesday, thursday: doThursday, friday: doFriday, saturday: doSaturday, sunday: doSunday }
   }, (response) => {
     if (chrome.runtime.lastError) {
       log('Could not connect to page. Make sure you are on 5starstudents.com and reload the tab.', 'error');
