@@ -27,6 +27,6 @@ A Chrome extension that automatically signs you up for flex sessions on 5starstu
 2. Sign in with your Google account
 3. Once on the dashboard click the extension
 4. Enter your **target teacher's last name** (e.g. `Redmond`) — partial match, case-insensitive
-5. Toggle **Tuesday** and/or **Wednesday** on or off as you want
+5. Toggle days on or off as you want (Mon-Sun)
 6. Click **Run**
 7. Watch the activity log — it will tell you exactly what happened for each date

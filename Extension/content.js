@@ -91,7 +91,7 @@ async function runAutoRegister(teacherQuery, days) {
     sendLog('Found ' + dates.length + ' eligible date(s) to process.');
 
     if (dates.length === 0) {
-      sendLog('No Tuesday/Wednesday dates found in upcoming list.', 'warn');
+      sendLog('No matching dates found in upcoming list.', 'warn');
       chrome.runtime.sendMessage({ type: 'done' });
       return;
     }
@@ -176,7 +176,7 @@ async function fetchPage(path) {
   }
 }
 
-// ── Parse upcoming Tue/Wed dates ──────────────────────────────────────────────
+// ── Parse upcoming dates ──────────────────────────────────────────────────────
 
 function parseUpcomingDates(doc, days) {
   const results = [];
@@ -194,10 +194,21 @@ function parseUpcomingDates(doc, days) {
     if (!label) return;
     const text = label.textContent.trim();
 
+    const isMonday = text.toLowerCase().startsWith('monday');
     const isTuesday = text.toLowerCase().startsWith('tuesday');
     const isWednesday = text.toLowerCase().startsWith('wednesday');
+    const isThursday = text.toLowerCase().startsWith('thursday');
+    const isFriday = text.toLowerCase().startsWith('friday');
+    const isSaturday = text.toLowerCase().startsWith('saturday');
+    const isSunday = text.toLowerCase().startsWith('sunday');
 
-    if ((days.tuesday && isTuesday) || (days.wednesday && isWednesday)) {
+    if ((days.monday && isMonday) || 
+        (days.tuesday && isTuesday) || 
+        (days.wednesday && isWednesday) || 
+        (days.thursday && isThursday) || 
+        (days.friday && isFriday) || 
+        (days.saturday && isSaturday) || 
+        (days.sunday && isSunday)) {
       results.push({ dateStr, display: text });
     }
   });
